@@ -23,5 +23,5 @@ ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
 if not ANTHROPIC_API_KEY:
     raise ValueError("ANTHROPIC_API_KEY not found in env variables")
 
-# POST_INTERVAL_HOURS = int("POST_INTERVAL_HOURS")
-# LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO")
+POST_INTERVAL_HOURS = float(os.getenv("POST_INTERVAL_HOURS", "2"))
+LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO")
