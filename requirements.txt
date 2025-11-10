@@ -1,0 +1,11 @@
+# Twitter API client
+tweepy>=4.0
+
+# Anthropic SDK for Claude API (required by client.py)
+anthropic>=0.40.0
+
+# scheduling jobs
+APScheduler>=3.10.4
+
+# Environment variable management for API keys
+python-dotenv>=1.0.0
