@@ -42,7 +42,7 @@ ai-twitter-agent/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/ai-twitter-agent.git
+git clone https://github.com/zauTT/ai-twitter-agent.git
 cd ai-twitter-agent
 ```
 
