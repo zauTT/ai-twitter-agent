@@ -21,6 +21,8 @@ ai-twitter-agent/
 ├── .gitignore                # Git ignore rules
 ├── requirements.txt          # Python dependencies
 ├── README.md                 # This file
+├── logs/                     # Log files (auto-generated, not in repo)
+│   └── bot.log               # Bot activity logs
 └── src/
     ├── __init__.py           # Package initialization
     ├── main.py               # Main entry point
@@ -191,6 +193,26 @@ Press `Ctrl+C` to gracefully shut down the bot. It will:
 - Stop the scheduler
 - Log shutdown message
 - Exit cleanly
+
+## Logs
+
+The bot logs all activity to both console and file:
+- **Console**: Real-time output when running
+- **File**: `logs/bot.log` for historical review
+
+View logs:
+```bash
+# See recent activity
+tail -f logs/bot.log
+
+# View entire log file
+cat logs/bot.log
+
+# Search logs for errors
+grep ERROR logs/bot.log
+```
+
+Logs include timestamps, so you can track when jokes were posted and any errors that occurred.
 
 ## Running 24/7
 

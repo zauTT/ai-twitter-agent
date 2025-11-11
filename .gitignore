@@ -21,6 +21,10 @@ ENV/
 .DS_Store
 Thumbs.db
 
+# Logs
+logs/
+*.log
+
 # Distribution
 dist/
 build/
