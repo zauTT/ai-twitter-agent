@@ -22,7 +22,7 @@ Example:
 """
 
 __version__ = "1.0.0"
-__author__ = "Your Name"
+__author__ = "Giorgi Zautashvili"
 __description__ = "AI-powered Twitter bot for automated joke posting"
 
 # Package-level exports (optional)

@@ -19,6 +19,9 @@ ai-twitter-agent/
 ├── .env                      # API keys and configuration (not in repo)
 ├── .env.example              # Template for environment variables
 ├── .gitignore                # Git ignore rules
+├── .dockerignore             # Docker ignore rules
+├── Dockerfile                # Docker image configuration
+├── docker-compose.yml        # Docker Compose configuration
 ├── requirements.txt          # Python dependencies
 ├── README.md                 # This file
 ├── logs/                     # Log files (auto-generated, not in repo)
@@ -259,6 +262,118 @@ Enable and start:
 ```bash
 sudo systemctl enable twitter-bot
 sudo systemctl start twitter-bot
+```
+
+### Option 4: Docker (Recommended)
+
+Docker provides the easiest way to run the bot in a consistent, isolated environment.
+
+#### Prerequisites
+- [Docker](https://docs.docker.com/get-docker/) installed
+- [Docker Compose](https://docs.docker.com/compose/install/) installed
+
+#### Quick Start with Docker
+
+1. **Ensure your `.env` file is configured** (Docker will use it automatically)
+
+2. **Build and start the container:**
+```bash
+docker-compose up -d
+```
+
+3. **View logs:**
+```bash
+docker-compose logs -f
+```
+
+4. **Stop the bot:**
+```bash
+docker-compose down
+```
+
+#### Docker Commands
+
+**Build the image:**
+```bash
+docker-compose build
+```
+
+**Start the bot in the background:**
+```bash
+docker-compose up -d
+```
+
+**View real-time logs:**
+```bash
+docker-compose logs -f twitter-bot
+```
+
+**Stop the bot:**
+```bash
+docker-compose stop
+```
+
+**Restart the bot:**
+```bash
+docker-compose restart
+```
+
+**Remove container and image:**
+```bash
+docker-compose down
+docker rmi ai-twitter-agent
+```
+
+#### Using Docker without Docker Compose
+
+**Build the image:**
+```bash
+docker build -t ai-twitter-agent .
+```
+
+**Run the container:**
+```bash
+docker run -d \
+  --name ai-twitter-agent \
+  --env-file .env \
+  -v $(pwd)/logs:/app/logs \
+  --restart unless-stopped \
+  ai-twitter-agent
+```
+
+**View logs:**
+```bash
+docker logs -f ai-twitter-agent
+```
+
+**Stop the container:**
+```bash
+docker stop ai-twitter-agent
+```
+
+#### Docker Advantages
+
+- **Isolated Environment**: No conflicts with system Python or packages
+- **Easy Deployment**: Works the same on any machine
+- **Auto-restart**: Container restarts automatically if it crashes
+- **Simple Updates**: Rebuild and restart to update
+- **Resource Limits**: Optionally limit CPU/memory usage
+- **Clean Removal**: Delete container without affecting system
+
+#### Development with Docker
+
+To mount source code for live development (changes reflect without rebuild):
+
+1. Uncomment the volume mount in `docker-compose.yml`:
+```yaml
+volumes:
+  - ./logs:/app/logs
+  - ./src:/app/src  # Uncomment this line
+```
+
+2. Restart the container:
+```bash
+docker-compose restart
 ```
 
 ## Troubleshooting
